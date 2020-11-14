@@ -4,26 +4,26 @@
 #define MaxVertex 105
 typedef int Vertex; 
 int G[MaxVertex][MaxVertex];
-int parent[MaxVertex];   // ²¢²é¼¯ 
-int dist[MaxVertex]; // ¾àÀë 
-int Nv;    // ½áµã 
-int Ne;    // ±ß 
-int sum;  // È¨ÖØºÍ 
+int parent[MaxVertex];   // å¹¶æŸ¥é›† 
+int dist[MaxVertex]; // è·ç¦» 
+int Nv;    // ç»“ç‚¹ 
+int Ne;    // è¾¹ 
+int sum;  // æƒé‡å’Œ 
 using namespace std; 
-vector<Vertex> MST;  // ×îĞ¡Éú³ÉÊ÷ 
+vector<Vertex> MST;  // æœ€å°ç”Ÿæˆæ ‘ 
 
-// ³õÊ¼»¯Í¼ĞÅÏ¢ 
+// åˆå§‹åŒ–å›¾ä¿¡æ¯ 
 void build(){
 	Vertex v1,v2;
 	int w;
 	cin>>Nv>>Ne;
 	for(int i=1;i<=Nv;i++){
 		for(int j=1;j<=Nv;j++)
-			G[i][j] = 0;  // ³õÊ¼»¯Í¼ 
-		dist[i] = INF;   // ³õÊ¼»¯¾àÀë
-		parent[i] = -1;  // ³õÊ¼»¯²¢²é¼¯ 
+			G[i][j] = 0;  // åˆå§‹åŒ–å›¾ 
+		dist[i] = INF;   // åˆå§‹åŒ–è·ç¦»
+		parent[i] = -1;  // åˆå§‹åŒ–å¹¶æŸ¥é›† 
 	}
-	// ³õÊ¼»¯µã
+	// åˆå§‹åŒ–ç‚¹
 	for(int i=0;i<Ne;i++){
 		cin>>v1>>v2>>w;
 		G[v1][v2] = w;
@@ -31,7 +31,7 @@ void build(){
 	}
 }
 
-// PrimËã·¨Ç°µÄ³õÊ¼»¯ 
+// Primç®—æ³•å‰çš„åˆå§‹åŒ– 
 void IniPrim(Vertex s){
 	dist[s] = 0;
 	MST.push_back(s);
@@ -42,7 +42,7 @@ void IniPrim(Vertex s){
 		} 
 }
 
-// ²éÕÒÎ´ÊÕÂ¼ÖĞdist×îĞ¡µÄµã 
+// æŸ¥æ‰¾æœªæ”¶å½•ä¸­distæœ€å°çš„ç‚¹ 
 Vertex FindMin(){
 	int min = INF;
 	Vertex xb = -1;
@@ -55,11 +55,11 @@ Vertex FindMin(){
 }
 
 void output(){
-	cout<<"±»ÊÕÂ¼Ë³Ğò£º"<<endl; 
-	for(Vertex i=1;i<=Nv;i++)
+	cout<<"è¢«æ”¶å½•é¡ºåºï¼š"<<endl; 
+	for(Vertex i=0;i<Nv;i++)
 		cout<<MST[i]<<" ";
-	cout<<"È¨ÖØºÍÎª£º"<<sum<<endl; 
-	cout<<"¸ÃÉú³ÉÊ÷Îª£º"<<endl; 
+	cout<<"æƒé‡å’Œä¸ºï¼š"<<sum<<endl; 
+	cout<<"è¯¥ç”Ÿæˆæ ‘ä¸ºï¼š"<<endl; 
 	for(Vertex i=1;i<=Nv;i++)
 		cout<<parent[i]<<" ";
 }
